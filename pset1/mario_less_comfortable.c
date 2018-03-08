@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<cs50.h>
 
-//our main function will prompt the user with constraints that the user input, h needs to be less than 23 and a non negative integer.
+
+void mario(int yNum);
 
 int main(void){
 
@@ -13,12 +14,19 @@ int main(void){
 
     while(uNum < 0 || uNum > 23);
 
-    uNum = uNum +1;
+    mario(uNum);
 
-    for(int i = 1; i < uNum; i++)
+
+}//end main
+
+void mario(int yNum)
+{
+        yNum = yNum +1;
+
+        for(int i = 1; i < yNum; i++)
                 {                                   //print this many columns, changed i to 1 since it's not a full pyramid
 
-                    for(int l =uNum; l > i+1; l--)
+                    for(int l =yNum; l > i+1; l--)
                         {                           //print this many spaces, decrement the amount of printed spaces
                             printf(" ");
                         }
@@ -28,11 +36,8 @@ int main(void){
                             printf("#");
                         }
 
+                    printf("\n");                   //print a new line per loop
 
-       printf("\n");
+                 } //end for loop
 
-    }//end for loop
-}
-
-//end main
-
+}//end mario
