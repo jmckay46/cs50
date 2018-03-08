@@ -1,21 +1,26 @@
 #include<stdio.h>
 #include<cs50.h>
 #include<string.h>
+#include<stdlib.h>
 
-/*****************************IN PROGRESS**********************************/
+/*          argc is the argument counter             */
+/*          argv[] is the arguments passed to the program */
+/*          therefore argv[1] must be the key       */
 
-int main(void)
+int main (int argc, string argv[])
 {
-    string p_text = get_string("plaintext: ");          //prompt the user for a string, and store it in p_text
-    int key = get_int("Key: ");                         //prompt the user for a key
-    int j = strlen(p_text);                             //store j as the number of total characters in the given string
 
-    printf("ciphertext: ");
-    for(int i =0; i < j; i++)                           //loop till end of the string
-    {
-        char c_text = p_text[i] + key;
-        printf("%c", c_text);                           //print each translated character
-    }
+        string p_text = get_string("plaintext: ");               //prompt the user for a string
+        int key = atoi(argv[1]);                                //store the first argument into integer key
+        int j = strlen(p_text);                                 //store the total length of users input into integer j
 
+        printf("ciphertext: ");
+        for (int n = 0; n < j; n ++)                            //loop j amount of times, which is the users input
+            {
+                char c_text = p_text[n] + key;
+                printf("%c", c_text);
+            }
     printf("\n");
-}
+    printf("Program Counter is %i\n", argc);
+
+}//end main
