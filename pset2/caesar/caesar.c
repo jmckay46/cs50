@@ -4,9 +4,9 @@
 #include<stdlib.h>
 #include<ctype.h>
 
-/*          argc is the argument counter                                                               */
-/*          argv[] is the arguments passed to the program                                              */
-/*          therefore argv[1] must be the key                                                          */
+/*          argc is the argument counter                        */
+/*          argv[] is the arguments passed to the program       */
+/*          therefore argv[1] must be the key                   */
 
 void cipher(string text, int k);
 
@@ -14,18 +14,17 @@ int main (int argc, string argv[])
 {
 
         string p_text = get_string("plaintext: ");               //prompt the user for a string
-        int key = atoi(argv[1]);                                //store the first argument into integer key
-        printf("ciphertext: ");
-        cipher(p_text, key);
-
+        int key = atoi(argv[1]);                                 //store the first argument into integer key
+        cipher(p_text, key);                                     //
         printf("\n");
         printf("Program Counter is %i\n", argc);
 
 }//end main
 
 
-void cipher(string text, int k)
+void cipher(string text, int k)                                 //this function prompts the user for a caesar's ciphered text & outputs the ciphered text
 {
+    printf("ciphertext0: ");
     char ci_text;
     int j = strlen(text);                                       //store the strings length into j
     for (int n = 0; n < j; n++)                                 //loop until the end of the string
@@ -41,5 +40,19 @@ void cipher(string text, int k)
             printf("%c", ci_text);
         }
     }//end for
-}//end cipher
 
+    printf("\nciphertext1: ");
+    for (int l = 0; l < j; l++)
+    {
+        ci_text = text[l] + k;
+        if(isalpha(ci_text))
+        {
+            printf("%c", ci_text);
+        }
+        else
+        {
+            ci_text = 'A' + k;
+            printf("%c", ci_text);
+        }
+    }
+}//end cipher

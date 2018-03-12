@@ -57,5 +57,4 @@ void counter(int amount)
 
 
      printf("%i\n", count);                                         //output the number of coins dispensed
-
-}//end of counter function
+}//end of counter
