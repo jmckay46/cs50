@@ -15,7 +15,7 @@ int main (int argc, string argv[])
 
         string p_text = get_string("plaintext: ");               //prompt the user for a string
         int key = atoi(argv[1]);                                 //store the first argument into integer key
-        cipher(p_text, key);                                     //
+        cipher(p_text, key);
         printf("\n");
         printf("Program Counter is %i\n", argc);
 
@@ -45,13 +45,13 @@ void cipher(string text, int k)                                 //this function 
     for (int l = 0; l < j; l++)
     {
         ci_text = text[l] + k;
-        if(isalpha(ci_text))
+        if(isalpha(ci_text))                                    //if we run into a single ciphered alphabetical character
         {
-            printf("%c", ci_text);
+            printf("%c", ci_text);                              //then print the ciphered alphabetical letter
         }
         else
         {
-            ci_text = 'A' + k;
+            ci_text = 'A' + l;                                  //if it's not an alphabet, add A + count
             printf("%c", ci_text);
         }
     }
