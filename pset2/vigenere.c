@@ -28,18 +28,21 @@ void cipher(string text, string k)
 
     for (int n = 0; n < strlen(text); n++)
     {
-        int i = (int) k[n] - 65;
-        i = i % 26;
-        if (i < 25)
-        {
-            char ci_text = (char) text[n] + i;
-            printf("%c", ci_text);
-        }
+        //when text[0] = 'H',
+        int ci_text = (int) text[n] - 65;                      //zero in A = 0, B = 1, B = 2, k_text is the key
+        int i = (int) k[n] - 65;                               //the key value i is equal to the integer value at the nth value of k
+            ci_text = ci_text + i;
+            ci_text = ci_text % 26;
+            if(ci_text < 25)
+            {
+                char c_text = (char) ci_text + 65;
+                printf("%c", c_text);
+            }
+
         else
-        {
-            char ci_text = (char) text[n] - 26 + 97;
-            printf("%c", ci_text);
-        }
-        i = 0;
+            {
+                printf("@");
+            }
+
     }
-}
+}//end cipher
