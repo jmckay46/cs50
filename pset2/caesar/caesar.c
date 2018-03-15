@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 #include<cs50.h>
 #include<string.h>
@@ -13,34 +12,32 @@ void cipher(string text, int k);
 
 int main (int argc, string argv[])
 {
-    if (argc <= 2)
+    if (argc == 2)                                               //print a message error if the argc is not equal to 2
     {
         string p_text = get_string("plaintext: ");               //prompt the user for a string
         int key = atoi(argv[1]);                                 //store the first argument into integer key
-        cipher(p_text, key);
-        printf("\n");
-        printf("Program Counter is %i\n", argc);
+        cipher(p_text, key);                                     //print the ciphered charater
     }
     else
     {
-        printf("Error! argc must be less than %i\n", argc);
+        printf("Usage: ./caesar k");
         return 1;
     }
 }//end main
 
 
-void cipher(string text, int k)                                 //this function prompts the user for a caesar's ciphered text & outputs the ciphered text
+void cipher(string text, int k)                                 //this function prints caesar's ciphered text
 {
     printf("ciphertext: ");
 
-    for(int n = 0; n < strlen(text); n++)                                  //one character at a time, at nth index of our string in plain text
+    for(int n = 0; n < strlen(text); n++)                       //loop until the end of the string
         {
 
-              if(isupper(text[n]))
+              if(isupper(text[n]))                              //if we run into an uppercase..
             {
-                int ci_text = (int) text[n] - 65;                                 //take the integer value of the ascii character and subtract by 65
-                ci_text = ci_text + k;
-                ci_text = ci_text % 26;
+                int ci_text = (int) text[n] - 65;               //'zero' in the uppercase letters
+                ci_text = ci_text + k;                          //add the key value to the 'zeroed' integer value
+                ci_text = ci_text % 26;                         //mod that value by 26
                 if (ci_text <= 25)
                  {
                     char c_text = (char) ci_text +65;
@@ -51,10 +48,10 @@ void cipher(string text, int k)                                 //this function 
                      char c_text = (char) ci_text + 65;
                      printf("%c", c_text);
                  }
-            ci_text = 0;
+            ci_text = 0;                                        //reset ci_text to 0 since we'll be looping again=
             }
 
-            else if(islower(text[n]))
+            else if(islower(text[n]))                           //if we run into a lowercase..
              {
                  int ci_text = (int) text[n] - 97;
                  ci_text = ci_text + k;
