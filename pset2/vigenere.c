@@ -4,7 +4,11 @@
 #include<stdlib.h>
 #include<ctype.h>
 
-void cipher(string text, string k);
+/****           This program prompts the user for a text and
+                uses vigeneres' ciphering algorithm to cipher
+                plain text                                               ****/
+
+void cipher(string text, string s_key);
 
 int main(int argc, string argv[])
 {
@@ -13,7 +17,6 @@ int main(int argc, string argv[])
         string p_text = get_string("plaintext: ");
         string key = argv[1];
         cipher(p_text, key);
-        printf("\n");
     }
     else
     {
@@ -22,27 +25,52 @@ int main(int argc, string argv[])
 
 }
 
-void cipher(string text, string k)
+void cipher(string text, string s_key)
 {
+    int count = 0;
+
     printf("ciphertext: ");
 
     for (int n = 0; n < strlen(text); n++)
     {
-        //when text[0] = 'H',
-        int ci_text = (int) text[n] - 65;                      //zero in A = 0, B = 1, B = 2, k_text is the key
-        int i = (int) k[n] - 65;                               //the key value i is equal to the integer value at the nth value of k
-            ci_text = ci_text + i;
+        if(count < strlen(s_key))
+        {
+            int s_keyi = (int) s_key[n] - 65;
+            int ci_text = (int) text[n] - 65;
+            ci_text = ci_text + s_keyi;
             ci_text = ci_text % 26;
+
             if(ci_text < 25)
             {
                 char c_text = (char) ci_text + 65;
                 printf("%c", c_text);
             }
-
-        else
+             else
             {
                 printf("@");
             }
+
+        count ++;
+        }
+
+        else                                                                 //when we reached the end of the string lengths key, then take the [nth + string length] to access the character after the given interval
+        {
+            int ci_text = (int) text[n + strlen(s_key)] + strlen(s_key);
+            int sc_key = (int) s_key[n - strlen(s_key)] - 65;                                 //this is text[n + strlen of key]
+            ci_text = ci_text + sc_key;
+            ci_text = ci_text % 26;
+
+            if(ci_text < 25)
+            {
+                char c_text = (char) ci_text + sc_key + 65;
+                printf("%c", c_text);
+            }
+            else
+            {
+                printf("@");
+            }
+
+        }
 
     }
 }//end cipher
