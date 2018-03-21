@@ -21,10 +21,10 @@ int main(int argc, string argv[])
     }
     else
     {
-        printf("Usage: ./vigenere k");
+        printf("Usage: ./vigenere k\n");
     }
 
-}
+}//end main
 
 void cipher(string text, string s_key)
 {
@@ -34,23 +34,24 @@ void cipher(string text, string s_key)
 
     for (int n = 0; n < strlen(text); n++)
     {
+        int ci_text = (int) text[n] + (int) s_key[n];                   //add the integer values of text[nth] value and the key
+        char c_text = (char) ci_text;                                   //convert the ciphered text value into a character
+        int sc_key = (int) s_key[n = strlen(s_key)];
+
             if(isupper(text[n]))
             {
                 if(count < strlen(s_key))
                 {
-                    int s_keyi = (int) s_key[n] - 65;
-                    int ci_text = (int) text[n] - 65;
-                    ci_text = ci_text + s_keyi;
                     ci_text = ci_text % 26;
 
                         if(ci_text < 25)
                         {
-                            char c_text = (char) ci_text + 65;
+                            c_text = c_text + 65;
                             printf("%c", c_text);
                         }
                         else
                         {
-                            char c_text = (char) ci_text + 65;
+                            c_text = c_text + 65;
                             printf("%c", c_text);
                         }
                     count ++;
@@ -58,41 +59,38 @@ void cipher(string text, string s_key)
 
                 else                                                                                  //when we reached the end of the string lengths key, then take the [nth + string length] to access the character after the given interval
                 {
-                    int ci_text = (int) text[n + strlen(s_key)] + strlen(s_key);
-                    int sc_key = (int) s_key[n - strlen(s_key)] - 65;                                 //this is text[n + strlen of key]
-                    ci_text = ci_text + sc_key;
+                    ci_text = (int) text[n + strlen(s_key)] + strlen(s_key);
+                    ci_text = ci_text - 65;
                     ci_text = ci_text % 26;
 
                         if(ci_text < 25)
                         {
-                            char c_text = (char) ci_text + sc_key + 65;
+                            c_text = sc_key + 65;
                             printf("%c", c_text);
                         }
                         else
                         {
-                            char c_text = (char) ci_text + 65;
+                            c_text = c_text + 65;
                             printf("%c", c_text);
                         }
                 }
          }//end of if0
 
-         else if(islower(text[n]))
+         if(islower(text[n]))
             {
                 if(count < strlen(s_key))
                 {
-                    int s_keyi = (int) s_key[n] - 97;
-                    int ci_text = (int) text[n] - 97;
-                    ci_text = ci_text + s_keyi;
+                    ci_text = (int) text[n] + (int) s_key[n] - 97;
                     ci_text = ci_text % 26;
 
                     if(ci_text < 25)
                     {
-                        char c_text = (char) ci_text + 97;
+                        c_text = c_text + 97;
                         printf("%c", c_text);
                     }
                      else
                     {
-                        char c_text = (char) ci_text + 97;
+                        c_text = c_text + 97;
                         printf("%c", c_text);
                     }
                     count ++;
@@ -100,19 +98,17 @@ void cipher(string text, string s_key)
 
                 else                                                                 //when we reached the end of the string lengths key, then take the [nth + string length] to access the character after the given interval
                 {
-                    int ci_text = (int) text[n + strlen(s_key)] + strlen(s_key);
-                    int sc_key = (int) s_key[n - strlen(s_key)] - 65;                                 //this is text[n + strlen of key]
-                    ci_text = ci_text + sc_key;
+                    ci_text = (int) text[n + strlen(s_key)] + strlen(s_key) + (int) s_key[n - strlen(s_key)] - 65;
                     ci_text = ci_text % 26;
 
                     if(ci_text < 25)
                     {
-                        char c_text = (char) ci_text + sc_key + 65;
+                        c_text = c_text + 65;
                         printf("%c", c_text);
                     }
                     else
                     {
-                        char c_text = (char) ci_text + 65;
+                        c_text = c_text + 65;
                         printf("%c", c_text);
                     }
                 }
