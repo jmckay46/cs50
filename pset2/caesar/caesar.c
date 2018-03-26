@@ -49,7 +49,7 @@ void cipher(string text, int k)                                 //this function 
                      char c_text = (char) ci_text + 65;
                      printf("%c", c_text);
                  }
-            ci_text = 0;                                        //reset ci_text to 0 since we'll be looping again=
+            ci_text = 0;                                     //reset ci_text to 0 since we'll be looping again=
             }
 
             else if(islower(text[n]))                           //if we run into a lowercase..
@@ -67,7 +67,7 @@ void cipher(string text, int k)                                 //this function 
                      char c_text = (char) ci_text - 26 + 97;
                      printf("%c", c_text);
                    }
-                 ci_text =0;
+                 ci_text = 0;
              }
 
             else if(isspace(text[n]))                           //if we run into a space at nth character, print a space
