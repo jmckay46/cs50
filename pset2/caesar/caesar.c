@@ -4,9 +4,10 @@
 #include<stdlib.h>
 #include<ctype.h>
 
-/*          argc is the argument counter                        */
-/*          argv[] is the arguments passed to the program       */
-/*          therefore argv[1] must be the key                   */
+/*                  This program prompts the user for a string
+                    and ciphers the string using caesar's
+                    algorithm                                       */
+
 
 void cipher(string text, int k);
 
