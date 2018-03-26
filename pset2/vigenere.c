@@ -4,9 +4,9 @@
 #include<stdlib.h>
 #include<ctype.h>
 
-/****           This program prompts the user for a text and
-                uses vigeneres' ciphering algorithm to cipher
-                plain text                                               ****/
+/*          This program prompts the user for a text and
+            uses vigeneres' algorithm to cipher plain text
+                                                                */
 
 void cipher(string text, string s_key);
 
