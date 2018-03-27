@@ -9,17 +9,16 @@ void mario(int yNum);
 
 int main(void)
 {
-    int uNum;
+    int height;
 
     do
     {
-        uNum = get_int("Height: ");                  //repeatedly prompt the user for a positive integer
+        height = get_int("Height: ");                  //repeatedly prompt the user for a positive integer
     }
 
-    while(uNum < 0 || uNum > 23);
+    while(height < 0 || height > 23);                 //input constraints are greater than 0 and less than 23
 
-    mario(uNum);
-
+    mario(height);
 
 }//end main
 
