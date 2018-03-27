@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<cs50.h>
 
-
 void mario(int yNum);
 
 int main(void){
