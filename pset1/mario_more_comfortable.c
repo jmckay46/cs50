@@ -1,21 +1,24 @@
 #include<stdio.h>
 #include<cs50.h>
 
+/*                      This program prompts the user for the height
+                        of mario's double pyramid, using spaces and
+                        hashes
+                                                                                    */
 void mario(int yNum);
 
 int main(void)
 {
-
-    int uNum;
+    int height;
 
     do
     {
-        uNum = get_int("Height: ");                          //repeatedly prompt the user for a positive integer
+        height = get_int("Height: ");                            //repeatedly prompt the user for a positive integer
     }
 
-    while(uNum < 0 || uNum > 23);
+    while(height < 0 || height > 23);                           //input constraints must be greater than zero and less than 23
 
-    mario(uNum);
+    mario(height);
 
 }//end main
 
