@@ -14,7 +14,6 @@ int main(int argc, string argv[])
         string k = argv[1];
         cipher_text(text, k);
         printf("\n");
-
     }
     else
     {
@@ -29,6 +28,7 @@ void cipher_text(string pl_text, string key)
 
     int count = 0;
     int key_value;
+    int key_value1;
     int key_len = strlen(key);
     int p_text;
     char ci_text;
@@ -68,8 +68,9 @@ void cipher_text(string pl_text, string key)
             }
             else
             {
-                p_text = pl_text[n + key_len] + key_len - 65;
-                ci_text = (char) p_text + key_value;
+                key_value1 = (int) key[n - key_len] - 65;
+                p_text = pl_text[n + key_len] - 65;
+                ci_text = (char) p_text + key_value1;
                 ci_text = ci_text % 26;
                 if (ci_text < 25)
                 {
@@ -105,8 +106,9 @@ void cipher_text(string pl_text, string key)
             }
             else
             {
-                p_text = pl_text[n + key_len] + key_len - 97;
-                ci_text = (char) p_text + key_value;
+                key_value1 = key[n - key_len] - 97;
+                p_text = pl_text[n + key_len];
+                ci_text = (char) p_text + key_value1;
                 ci_text = ci_text % 26;
                 if (ci_text < 25)
                 {

@@ -7,22 +7,25 @@
 #define NICKEL 5
 #define PENNY 1
 
+/*              This program prompts the user for the amount of change
+                owed and outputs the number of coins dispensed.
+                                                                        */
 void counter(int amount);
 
 int main(void)
 {
-    float input;
+    float change;
 
     do
         {
-            input = get_float("Change Owed: ");                     //prompt the user for a float type
+            change = get_float("Change Owed: ");                     //prompt the user for a float type
         }
 
     while(input <= 0);
 
-    input = input*100;
-    input = round(input);
-    counter(input);
+    change = change*100;
+    change = round(change);
+    counter(change);
 
 }//end main
 
