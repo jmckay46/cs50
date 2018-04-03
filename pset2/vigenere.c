@@ -18,6 +18,7 @@ int main(int argc, string argv[])
     else
     {
         printf("Usage: ./vigenere k\n");
+        return 1;
     }
 
 }//end main
@@ -25,8 +26,6 @@ int main(int argc, string argv[])
 void cipher_text(string pl_text, string key)
 {
     printf("ciphertext: ");
-     //this loop starts off at the 0th index of the plain text string, zero in the plain text string AND the key text value.
-     //A = 0, a = 0 ....-> Z = 25, z = 25
     int p_text;
     int key_val;
     int count = 0;
