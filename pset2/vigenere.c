@@ -25,8 +25,6 @@ int main(int argc, string argv[])
 void cipher_text(string pl_text, string key)
 {
     printf("ciphertext: ");
-     //this loop starts off at the 0th index of the plain text string, zero in the plain text string AND the key text value.
-     //A = 0, a = 0 ....-> Z = 25, z = 25
     int p_text;
     int key_val;
     int count = 0;
@@ -78,18 +76,6 @@ void cipher_text(string pl_text, string key)
 
                 ci_text = (int) pl_text[n] + key_val;
                 printf("%c", ci_text);
-               /* ci_text = ci_text % 26;
-                if (ci_text < 25)
-                {
-                    ci_text = ci_text + 65;
-                    printf("%c", ci_text);
-                }
-                else
-                {
-                    ci_text = ci_text + 65;
-                    printf("%c", ci_text);
-                }
-                */
             }
         }//end if0
 
@@ -137,17 +123,6 @@ void cipher_text(string pl_text, string key)
 
                 ci_text = (int) pl_text[n] + key_val;
                 printf("%c", ci_text);
-                /*if(ci_text < 25)
-                {
-                    ci_text = ci_text + 97;
-                    printf("%c", ci_text);
-                }
-                else
-                {
-                    ci_text = ci_text + 97;
-                    printf("%c", ci_text);
-                }*/
-
             }
         }
         else if(ispunct(pl_text[n]))
