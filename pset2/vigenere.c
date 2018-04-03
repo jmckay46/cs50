@@ -20,7 +20,6 @@ int main(int argc, string argv[])
         printf("Usage: ./vigenere k\n");
         return 1;
     }
-
 }//end main
 
 void cipher_text(string pl_text, string key)
