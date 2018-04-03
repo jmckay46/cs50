@@ -25,36 +25,34 @@ int main(int argc, string argv[])
 void cipher_text(string pl_text, string key)
 {
     printf("ciphertext: ");
-
-    int count = 0;
-    int key_value;
-    int key_value1;
-    int key_len = strlen(key);
+     //this loop starts off at the 0th index of the plain text string, zero in the plain text string AND the key text value.
+     //A = 0, a = 0 ....-> Z = 25, z = 25
     int p_text;
+    int key_val;
+    int count = 0;
     char ci_text;
-    //if is upper of k[n] then subtract 65, if is lower of k[n] then subtract 97
 
-    for (int n = 0; n < strlen(pl_text); n++)
+    for(int n = 0; n < strlen(pl_text); n++)
     {
-        key_value = (int) key[n];
+        if(isupper(pl_text[n]))                     //if we run into an uppercase letter in the plain text, and immediately zero in, if isupper
+        {
+            p_text = (int) pl_text[n] - 65;
 
-        if(isupper(key[n]))
-        {
-            key_value = key_value - 65;
-        }
-        else if(islower(key[n]))
-        {
-            key_value = key_value - 97;
-        }
-
-        if(isupper(pl_text[n]))
-        {
-            if(count < key_len)
+            if (count < strlen(key))                //do this until the end of the length of key, while pl_text[n] is an uppercase
             {
-                p_text = pl_text[n] - 65;
-                ci_text = (char) p_text + key_value;
+                if(isupper(key[n]))                 //zero in uppercase/lowercase key value letters
+                {
+                    key_val = key[n] - 65;
+                }
+                else if(islower(key[n]))
+                {
+                    key_val = key[n] - 97;
+                }
+
+                ci_text = p_text + key_val;
                 ci_text = ci_text % 26;
-                if (ci_text < 25)
+
+                if(ci_text < 25)
                 {
                     ci_text = ci_text + 65;
                     printf("%c", ci_text);
@@ -68,10 +66,19 @@ void cipher_text(string pl_text, string key)
             }
             else
             {
-                key_value1 = (int) key[n - key_len] - 65;
-                p_text = pl_text[n + key_len] - 65;
-                ci_text = (char) p_text + key_value1;
-                ci_text = ci_text % 26;
+                ci_text = pl_text[n + strlen(key)];
+                if(isupper(key[n - strlen(key)]))
+                {
+                    key_val = (int) key[n - strlen(key)] - 65;
+                }
+                else if(islower(key[n]))
+                {
+                    key_val = (int) key[n - strlen(key)] - 97;
+                }
+
+                ci_text = (int) pl_text[n] + key_val;
+                printf("%c", ci_text);
+               /* ci_text = ci_text % 26;
                 if (ci_text < 25)
                 {
                     ci_text = ci_text + 65;
@@ -82,17 +89,28 @@ void cipher_text(string pl_text, string key)
                     ci_text = ci_text + 65;
                     printf("%c", ci_text);
                 }
+                */
             }
-        }
+        }//end if0
 
         else if(islower(pl_text[n]))
         {
-            if (count < key_len)
+            p_text = (int) pl_text[n] - 97;
+
+            if (count < strlen(key))
             {
-                p_text = pl_text[n] - 97;
-                ci_text = (char) p_text + key_value;
+                if(isupper(key[n]))
+                {
+                    key_val = (int) key[n] - 65;
+                }
+                else if(islower(key[n]))
+                {
+                    key_val = (int) key[n] - 97;
+                }
+
+                ci_text = p_text + key_val;
                 ci_text = ci_text % 26;
-                if (ci_text < 25)
+                if(ci_text < 25)
                 {
                     ci_text = ci_text + 97;
                     printf("%c", ci_text);
@@ -102,15 +120,24 @@ void cipher_text(string pl_text, string key)
                     ci_text = ci_text + 97;
                     printf("%c", ci_text);
                 }
-                count ++;
+            count ++;
             }
             else
             {
-                key_value1 = key[n - key_len] - 97;
-                p_text = pl_text[n + key_len];
-                ci_text = (char) p_text + key_value1;
-                ci_text = ci_text % 26;
-                if (ci_text < 25)
+                ci_text = pl_text[n + strlen(key)];
+
+                if(isupper(key[n - strlen(key)]))
+                {
+                    key_val = (int) key[n - strlen(key)] - 65;
+                }
+                else if(islower(key[n - strlen(key)]))
+                {
+                    key_val = key[n - strlen(key)] - 97;
+                }
+
+                ci_text = (int) pl_text[n] + key_val;
+                printf("%c", ci_text);
+                /*if(ci_text < 25)
                 {
                     ci_text = ci_text + 97;
                     printf("%c", ci_text);
@@ -119,20 +146,20 @@ void cipher_text(string pl_text, string key)
                 {
                     ci_text = ci_text + 97;
                     printf("%c", ci_text);
-                }
+                }*/
+
             }
+        }
+        else if(ispunct(pl_text[n]))
+        {
+            char punct;
+            punct = pl_text[n];
+            printf("%c", punct);
         }
 
         else if(isspace(pl_text[n]))
         {
             printf(" ");
         }
-
-        else if(ispunct(pl_text[n]))
-        {
-            char punct = pl_text[n];
-            printf("%c", punct);
-        }
-
     }//end for
 }//end cipher_text
