@@ -12,9 +12,20 @@ int main(void)
     long long mod = 100;
     long long xNum;
 
-    for(int n = 1; n < 9; n++)                          //for generating the second to last digit in the credit card
+    printf("first set: \n");
+    for(int n = 1; n < 9; n++)                          //for generating the second to last digit on the credit card
     {
-        printf("mod = %lld\n", mod);
+        uNum = cc_number % mod;
+        yNum = cc_number % (mod/10);
+        xNum = (uNum - yNum);
+        xNum = xNum/(mod/10);
+        printf("%lld\n", xNum);
+        mod *= 100;
+    }
+    mod = 10;
+    printf("second set: \n");
+    for (int j = 0; j < 8; j++)                       //for generating the last to second last digit on the credit card
+    {
         uNum = cc_number % mod;
         yNum = cc_number % (mod/10);
         xNum = (uNum - yNum);
