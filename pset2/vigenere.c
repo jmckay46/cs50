@@ -71,11 +71,11 @@ char cipher_text(char cin, string key)
             cin += ASCII_LWRCASE_INDEX;
             charIndex++;
         }
-        else if(isspace(cin))                                   //if we run into any spaces, then print a space
+        else if(isspace(cin))                                             //if we run into any spaces, then print a space
         {
             printf(" ");
         }
-        else if(ispunct(cin))                                   //if we run into any punctuated character, then return it
+        else if(ispunct(cin))                                            //if we run into any punctuated character, then return it
         {
             printf("%c", cin);
         }
