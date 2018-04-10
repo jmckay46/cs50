@@ -22,6 +22,7 @@ int main(void)
     change = change*100;
     change = round(change);
     counter(change);
+
 }//end main
 
 void counter(int amount)
