@@ -14,24 +14,33 @@ int charIndex = 0;
 
 int main(int argc, string argv[])
 {
-    if (argc == 2)
+    if (argc != 2)
     {
-        string text = get_string("plaintext: ");
-        string k = argv[1];
-
-        for (int n = 0; n < strlen(text); n++)
-        {
-           text[n] = cipher_text(text[n], k);
-        }
-
-        printf("%s\n", text);
-        return 0;
+        printf("Usage: %s\n", argv[0]);
+        return 1;
     }
     else
     {
-        printf("Usage: ./vigenere k\n");
-        return 1;
+        for(int i = 0; i < strlen(argv[1]); i++)
+        {
+            if(!(isalpha(argv[1][i])))
+            {
+                printf("Usage: %s\n", argv[0]);
+                return 1;
+            }
+        }
     }
+
+    string text = get_string("plaintext: ");
+    string k = argv[1];
+
+    for (int n = 0; n < strlen(text); n++)
+    {
+        text[n] = cipher_text(text[n], k);
+    }
+
+    printf("ciphertext: %s\n", text);
+    return 0;
 
 }//end main
 
@@ -51,7 +60,7 @@ char cipher_text(char cin, string key)
         if(isupper(cin))
         {
             cin -= ASCII_UPRCASE_INDEX;                                  //set the uppercase character to zero
-            cin = (cin + keyIndex) % A_TO_Z;                        //add the key value and mod by 26 letters
+            cin = (cin + keyIndex) % A_TO_Z;                             //add the key value and mod by 26 letters
             cin += ASCII_UPRCASE_INDEX;                                  //reset the ASCII valu
             charIndex ++;
         }
@@ -62,13 +71,14 @@ char cipher_text(char cin, string key)
             cin += ASCII_LWRCASE_INDEX;
             charIndex++;
         }
-        else if(isspace(cin))
+        else if(isspace(cin))                                   //if we run into any spaces, then print a space
         {
             printf(" ");
         }
-        else if(ispunct(cin))
+        else if(ispunct(cin))                                   //if we run into any punctuated character, then return it
         {
             printf("%c", cin);
         }
         return cin;
+
 }//end cipher_text
