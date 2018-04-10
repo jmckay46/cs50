@@ -9,7 +9,8 @@
 #define A_TO_Z 26
 #define KEY_SIZE strlen(key)
 
-void cipher_text(string cin, string key);
+char cipher_text(char cin, string key);
+int charIndex = 0;
 
 int main(int argc, string argv[])
 {
@@ -17,8 +18,14 @@ int main(int argc, string argv[])
     {
         string text = get_string("plaintext: ");
         string k = argv[1];
-        cipher_text(text, k);
-        printf("\n");
+
+        for (int n = 0; n < strlen(text); n++)
+        {
+           text[n] = cipher_text(text[n], k);
+        }
+
+        printf("%s\n", text);
+        return 0;
     }
     else
     {
@@ -28,45 +35,40 @@ int main(int argc, string argv[])
 
 }//end main
 
-void cipher_text(string p_text, string key)
+char cipher_text(char cin, string key)
 {
-    for (int n = 0; n < strlen(p_text); n++)
-    {
-        char textIndex = p_text[n];
-        char keyIndex;
+        int keyIndex;
 
-        if(isupper(key[textIndex % KEY_SIZE]))
+        if(isupper(key[charIndex % KEY_SIZE]))
         {
-            keyIndex = key[textIndex % KEY_SIZE] - ASCII_UPRCASE_INDEX;
+            keyIndex = key[charIndex % KEY_SIZE] - ASCII_UPRCASE_INDEX;
         }
         else
         {
-            keyIndex = key[textIndex % KEY_SIZE] - ASCII_LWRCASE_INDEX;
+            keyIndex = key[charIndex % KEY_SIZE] - ASCII_LWRCASE_INDEX;
         }
 
-        if(isupper(textIndex))
+        if(isupper(cin))
         {
-            textIndex -= ASCII_UPRCASE_INDEX;                                  //set the uppercase character to zero
-            textIndex = (textIndex + keyIndex) % A_TO_Z;                        //add the key value and mod by 26 letters
-            textIndex += ASCII_UPRCASE_INDEX;                                  //reset the ASCII valu
-            keyIndex++;
-            printf("%c", textIndex);
+            cin -= ASCII_UPRCASE_INDEX;                                  //set the uppercase character to zero
+            cin = (cin + keyIndex) % A_TO_Z;                        //add the key value and mod by 26 letters
+            cin += ASCII_UPRCASE_INDEX;                                  //reset the ASCII valu
+            charIndex ++;
         }
-        else if(islower(textIndex))
+        else if(islower(cin))
         {
-            textIndex -= ASCII_LWRCASE_INDEX;
-            textIndex = (textIndex + keyIndex) % A_TO_Z;
-            textIndex += ASCII_LWRCASE_INDEX;
-            keyIndex ++;
-            printf("%c", textIndex);
+            cin -= ASCII_LWRCASE_INDEX;
+            cin = (cin + keyIndex) % A_TO_Z;
+            cin += ASCII_LWRCASE_INDEX;
+            charIndex++;
         }
-        else if(isspace(textIndex))
+        else if(isspace(cin))
         {
             printf(" ");
         }
-        else if(ispunct(textIndex))
+        else if(ispunct(cin))
         {
-            printf("%c", textIndex);
+            printf("%c", cin);
         }
-    }
+        return cin;
 }//end cipher_text
