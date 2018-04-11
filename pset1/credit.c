@@ -20,18 +20,16 @@ int check_Luhn(long long cc_in, long long mod)
     int o_digit = 0;
     int e_sum = 0;
     int o_sum = 0;
-    long long e_mod = 10 * mod;
 
     for(int i = 0; i < 8; i++)
     {
-        e_digit = (cc_in % e_mod - (cc_in % (e_mod/10)))/(e_mod/10);
+        e_digit = (cc_in % (mod * 10) - (cc_in % (mod)))/(mod);
         o_digit = (cc_in % mod - (cc_in % (mod/10)))/(mod/10);
         e_sum = e_digit * 2;
         if (e_sum > 9)
         {
             e_sum = 1 + (e_sum % 10);
         }
-        e_mod *= 100;
         mod *= 100;
         o_sum += o_digit;
         sum += e_sum;
