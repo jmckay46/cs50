@@ -2,54 +2,52 @@
 #include<stdio.h>
 #include<math.h>
 
+#define BASE 10
+#define VISA 16
+void even_digit(long long, long long);            //mod = 100
+void odd_digit(long long, long long);             //mod = 1000
 
 int main(void)
 {
     printf("credit card number: 4519019868815974\n");
     long long cc_number = 4519019868815974;
-    long long uNum;
-    long long yNum;
-    long long mod = 100;
-    long long xNum;
-    long long sum;
-    long long rNum;
+    even_digit(cc_number, 100);
+    odd_digit(cc_number, 10);
+}
 
-    printf("first set: \n\n");
-    //here we need to multiply each digit, and then add each individual digit together
-
-    for(int n = 1; n < 9; n++)                          //for generating the second to last digit on the credit card
+void even_digit(long long x, long long e_mod, int init)
+{
+    int r;
+    int sum;
+    printf("Even digits: \n");
+    for (int i = 0; i < 8; i++)
     {
-        uNum = cc_number % mod;
-        yNum = cc_number % (mod/10);
-        xNum = (uNum - yNum)/(mod/10);
-        printf("%lld", xNum);
-        sum = xNum*2;
-       // printf("*2 =  %lld", sum);
-
-        if(sum >= 10)
+        r = (x % e_mod - (x % (e_mod/BASE)))/(e_mod/BASE);
+        sum = r * 2;
+        printf("%i * 2 : %i   ", r, sum);
+        if (sum > 9)
         {
-            rNum = sum % 10;
-            sum = (sum - rNum)/10;
-            printf("  *2 and added: %lld\n", rNum + sum);
+            int sum1 = 1 + (sum % BASE);
+            printf("%i\n", sum1);
         }
         else
         {
-            printf("  *2 and added: %lld\n", sum);
+            printf("%i\n", sum);
         }
-
-        mod *= 100;
+        e_mod *= 100;
     }
-    mod = 1000;
-    sum = cc_number % 10;
-    printf("\nsecond sets' sum: \n");
-    //here we need to add each digit and then take the sum.
-    for (int j = 0; j <= 6 ; j++)                           //for generating the last to second last digit on the credit card
+}
+void odd_digit(long long y, long long o_mod)
+{
+    int t;
+    int sum = 0;
+    printf("Odd digits: \n");
+    for (int i = 0; i < 8; i++)
     {
-        uNum = cc_number % mod;
-        yNum = cc_number % (mod/10);
-        xNum = (uNum - yNum)/(mod/10);
-        mod *= 100;
-        sum += xNum;
+        t = (y % o_mod - (y % (o_mod/BASE)))/(o_mod/BASE);
+        printf("%i\n", t);
+        sum += t;
+        o_mod *=100;
     }
-    printf("%lld\n", sum);
+    printf("\n%i\n", sum);
 }
