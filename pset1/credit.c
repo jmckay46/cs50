@@ -2,52 +2,41 @@
 #include<stdio.h>
 #include<math.h>
 
-#define BASE 10
-#define VISA 16
-void even_digit(long long, long long);            //mod = 100
-void odd_digit(long long, long long);             //mod = 1000
+int odd_digit(long long, long long);             //returns the sum of digits not multiplied by 2
 
 int main(void)
 {
-    printf("credit card number: 4519019868815974\n");
-    long long cc_number = 4519019868815974;
-    even_digit(cc_number, 100);
-    odd_digit(cc_number, 10);
-}
-
-void even_digit(long long x, long long e_mod, int init)
-{
+    long long cc_number = get_long_long("Credit card number?: ");
     int r;
-    int sum;
-    printf("Even digits: \n");
-    for (int i = 0; i < 8; i++)
+    long long e_mod = 100;
+    int sum = 0;
+    int sum1 = 0;
+    for (int i = 0; i < 8; i++)                                                     //this loop
     {
-        r = (x % e_mod - (x % (e_mod/BASE)))/(e_mod/BASE);
-        sum = r * 2;
-        printf("%i * 2 : %i   ", r, sum);
-        if (sum > 9)
+        r = (cc_number % e_mod - (cc_number % (e_mod/10)))/(e_mod/10);
+        sum = r * 2;                                                                //multiply each digit by 2
+        if (sum > 9)                                                                //if the digit is greater than 9..
         {
-            int sum1 = 1 + (sum % BASE);
-            printf("%i\n", sum1);
-        }
-        else
-        {
-            printf("%i\n", sum);
+            sum = 1 + (sum % 10);                                                 //add 1 + the ones' place
         }
         e_mod *= 100;
+        sum1 += sum;
     }
+
+     int odd_sum = odd_digit(cc_number, 10);
+     int check_sum = odd_sum + sum1;
+     printf("checksum: %i\n", check_sum);
 }
-void odd_digit(long long y, long long o_mod)
+
+int odd_digit(long long y, long long o_mod)
 {
     int t;
     int sum = 0;
-    printf("Odd digits: \n");
     for (int i = 0; i < 8; i++)
     {
-        t = (y % o_mod - (y % (o_mod/BASE)))/(o_mod/BASE);
-        printf("%i\n", t);
+        t = (y % o_mod - (y % (o_mod/10)))/(o_mod/10);
         sum += t;
         o_mod *=100;
     }
-    printf("\n%i\n", sum);
+    return sum;
 }
