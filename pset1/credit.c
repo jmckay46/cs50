@@ -2,6 +2,8 @@
 #include<stdio.h>
 #include<math.h>
 
+/*          IN PROGRESS         */
+
 #define NEXT_DIGIT 100
 
 int check_Luhn(long long, long long);         // checks to see if the given credit card number is valid
@@ -11,6 +13,16 @@ int main(void)
     long long cc_number = get_long_long("Number: ");
     int valid = check_Luhn(cc_number, 10);
     printf("sum should end in zero:  %i\n", valid);
+    if (valid == 0)
+    {
+        //if first cc_digit == 4, print VISA
+        //if first cc_digit == 51-55, print MASTERCARD
+        //if first cc_digit(s) == 34-37, print AMEX
+    }
+    else
+    {
+        //printf("INVALID ")
+    }
     return 0;
 }//end main
 
