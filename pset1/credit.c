@@ -3,7 +3,7 @@
 #include<math.h>
 
 int odd_digit(long long, long long);             //returns the sum of digits not multiplied by 2
-int even_digit(long long, long long);
+int even_digit(long long, long long);            //returns the sum of every digit multiplied by 2.
 
 int main(void)
 {
@@ -12,6 +12,7 @@ int main(void)
     int even_sum = even_digit(cc_number, 100);
     int check_sum = odd_sum + even_sum;
     printf("checksum: %i\n", check_sum);
+    return 0;
 }//end main
 
 int odd_digit(long long y, long long o_mod)
