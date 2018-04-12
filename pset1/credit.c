@@ -9,8 +9,8 @@
 #define MIN_CC_LENGTH 13
 
 int check_Luhn(long long, long long);                       //returns an integer
-int cc_length(long long);                                   //returns the length of credit card
-double log10(double x);
+int get_length(long long, long long);                       //returns the length of the number
+
 
 int main(void)
 {
@@ -22,8 +22,8 @@ int main(void)
     }
     else
     {
-        //cc_number = (cc_number - (cc_number % mod))/(mod);
-        //printf("%lld", cc_number);
+        int r = get_length(cc_number, 10);
+        printf("%i\n", r);
     }
     return 0;
 }//end main
@@ -31,7 +31,6 @@ int main(void)
 int check_Luhn(long long cc_in, long long modulo)
 {
     int sum = 0;
-    int cc_length;
     int even_digit = 0;
     int odd_digit = 0;
     int even_sum = 0;
@@ -49,10 +48,24 @@ int check_Luhn(long long cc_in, long long modulo)
         modulo *= NEXT_DIGIT;
         odd_sum += odd_digit;                           //sum all odd digits, store it in odd_sum
         sum += even_sum;                                //take the sum of all even digits that are multiplied by 2
-        cc_length = modulo;
     }
-    cc_length = log10(modulo) - 1;
-    printf("%i\n", cc_length);
     sum = sum + odd_sum;                                //take the sum of all odd digits and add it to the sum of all digits multiplied by 2
     return sum % 10;
 }//end check_Luhn
+
+int get_length(long long cin, long long modulus)
+{
+    int cc_length;
+    long long mod;
+    if (cin < modulus)
+    {
+        return 1;
+    }
+    while (modulus < cin)                                //loop until modulo > cin
+    {
+        modulus *= 10;
+        mod = modulus;
+    }
+    cc_length = log10(mod);
+    return cc_length;
+}//end get_length
