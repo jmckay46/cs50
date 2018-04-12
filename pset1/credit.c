@@ -36,7 +36,7 @@ int check_Luhn(long long cc_in, long long modulo)
     int even_sum = 0;
     int odd_sum = 0;
 
-    for(int i = 0; i < 8; i++)
+    for(int i = 0; i < (MAX_CC_LENGTH)/2; i++)
     {
         even_digit = (cc_in % (modulo * 10) - (cc_in % (modulo)))/(modulo);
         odd_digit = (cc_in % modulo - (cc_in % (modulo/10)))/(modulo/10);
