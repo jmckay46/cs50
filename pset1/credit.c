@@ -7,6 +7,13 @@
 #define NEXT_DIGIT 100
 #define MAX_CC_LENGTH 16
 #define MIN_CC_LENGTH 13
+#define AMEX_LWR 34
+#define AMEX_UPR 37
+#define VISA_UPR 40
+#define VISA_LWR 49
+#define MSR_CRD_UPR 55
+#define MSR_CRD_LWR 51
+
 
 int check_Luhn(long long, long long);                       //returns an integer
 int get_length(long long, long long);                       //returns the length of the number
@@ -16,31 +23,28 @@ int main(void)
 {
     long long cc_number = get_long_long("Number: ");
     long long mod;
-    int first_digit;
     int second_digit;
     int valid = check_Luhn(cc_number, 10);
     int cc_length = get_length(cc_number, 10);
 
-    if (valid != 0 && cc_length > MIN_CC_LENGTH)
+    if (valid != 0 || cc_length < MIN_CC_LENGTH)
     {
         printf("INVALID\n");
     }
     else
     {
-        mod = pow(10, cc_length);
-        first_digit = (cc_number - (cc_number % (mod/10)))/(mod/10);                //calculates & stores the first digit of the number
-        mod = pow(10, cc_length - 1);                                               //modulus of the second first digit
+        mod = pow(10, cc_length - 1);                                               //modulus of the first and second set of digits
         second_digit = (cc_number - (cc_number %(mod/10)))/(mod/10);                //store the first 2 digits of the number in second_digit
 
-        if(first_digit == 4)
+        if(second_digit >= VISA_LWR && second_digit <= VISA_UPR)
         {
             printf("VISA\n");
         }
-        else if(second_digit >= 51 && second_digit <= 55)
+        else if(second_digit >= MSR_CRD_LWR && second_digit <= MSR_CRD_UPR)
         {
             printf("MASTERCARD\n");
         }
-        else if(second_digit >= 34 && second_digit <= 37)
+        else if(second_digit >= AMEX_LWR && second_digit <= AMEX_UPR)
         {
             printf("AMEX\n");
         }
