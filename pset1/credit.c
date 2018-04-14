@@ -5,15 +5,6 @@
 /*          IN PROGRESS         */
 
 #define NEXT_DIGIT 100
-#define MAX_CC_LENGTH 16
-#define MIN_CC_LENGTH 13
-#define AMEX_LWR 34
-#define AMEX_UPR 37
-#define VISA_UPR 40
-#define VISA_LWR 49
-#define MSR_CRD_UPR 55
-#define MSR_CRD_LWR 51
-
 
 int check_Luhn(long long, long long);                       //returns an integer
 int get_length(long long, long long);                       //returns the length of the number
