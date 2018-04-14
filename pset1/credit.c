@@ -7,7 +7,7 @@
 #define NEXT_DIGIT 100
 
 int check_Luhn(long long, long long);                       //returns an integer
-int get_length(long long, long long);                       //returns the length of the number
+long long get_length(long long, long long);                       //returns the length of the number
 
 
 int main(void)
