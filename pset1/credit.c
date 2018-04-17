@@ -2,93 +2,102 @@
 #include<stdio.h>
 #include<math.h>
 
-/*          IN PROGRESS         */
+int check_Luhn(int sum[], int);
+int get_length(long long);
 
-#define NEXT_DIGIT 100
-#define MAX_CC_LENGTH 16
-#define MIN_CC_LENGTH 13
-
-int check_Luhn(long long, long long, cc_length);                       //returns an integer
-int get_length(long long, long long);                       //returns the length of the number
-
-long long base_ten;
-
-int main(void)
+int main()
 {
     long long cc_number = get_long_long("Number: ");
-   // long long mod;
-    int second_digit;
-    int valid = check_Luhn(cc_number);
-    int cc_length = get_length(cc_number, 10);
+    int length = get_length(cc_number);
+    int digit[length];
+    unsigned long long nextPos = 1;
 
-    if (valid % 10 != 0 || cc_length < MIN_CC_LENGTH)
+    for (int i = 0; i < length; i++)
+    {
+        digit[i] = (cc_number % (10 * nextPos))/(1 * nextPos);
+        nextPos *= 10;
+    }
+
+    int valid = (check_Luhn(digit, length)) % 10;
+
+    if (valid != 0)
     {
         printf("INVALID\n");
     }
     else
     {
-        base_ten = pow(10, cc_length - 1);                                               //modulus of the first and second set of digits
-        second_digit = (cc_number - (cc_number % (base_ten)/10)))/(base_ten/10);                //store the first 2 digits of the number in second_digit
+        long long sec_digit = (cc_number - (cc_number % (nextPos/100)))/(nextPos/100);
 
-        if(second_digit >= 40 && second_digit <= 49)
+        if (sec_digit >= 40 && sec_digit <= 49)
         {
             printf("VISA\n");
         }
-        else if(second_digit >= 51 && second_digit <= 55)
+        else if (sec_digit >= 51 && sec_digit <= 55)
         {
             printf("MASTERCARD\n");
         }
-        else if(second_digit >= 34 && second_digit <= 37)
+        else if (sec_digit >= 34 && sec_digit <= 37)
         {
             printf("AMEX\n");
         }
         else
         {
-            printf("INVALID1\n");
+            printf("INVALID\n");
         }
     }
     return 0;
-
 }//end main
 
-int check_Luhn(long long cc_in, int cc_length)
+int check_Luhn(int sum[], int cc_length)
 {
-    int sum = 0;
-    int even_digit = 0;
-    int odd_digit = 0;
+    int nDigit;
+    int oDigit;
     int even_sum = 0;
     int odd_sum = 0;
+    int n = 0;
+    int o = 0;
 
-    for(int i = 0; i < cc_length; i++)
+    printf("even digits \n");
+
+    for (int i = 0; i < ((cc_length/2)+1); i++)
     {
-        even_digit = (cc_in % (base_ten * 10) - (cc_in % (base_ten)))/(base_ten);
-        odd_digit = (cc_in % base_ten - (cc_in % (base_ten/10)))/(base_ten/10);
-        even_sum = even_digit * 2;
-        if (even_sum > 9)
+        nDigit = (sum[n + 1])*2;
+        if (nDigit > 9)
         {
-            even_sum = 1 + (even_sum % 10);
+            nDigit = 1 + (nDigit % 10);
         }
-        base_ten *= NEXT_DIGIT;
-        odd_sum += odd_digit;                           //sum all odd digits, store it in odd_sum
-        sum += even_sum;                                //take the sum of all even digits that are multiplied by 2
+        even_sum += nDigit;
+        printf("%i\n", nDigit);
+        n += 2;
     }
-    sum = sum + odd_sum;                                //take the sum of all odd digits and add it to the sum of all digits multiplied by 2
-    return sum;
-}//end check_Luhn
+    printf("%i\n", even_sum);
+    printf("odd digits\n");
 
-int get_length(long long cin)
+    for (int i = 0; i < ((cc_length/2)+1); i++)
+    {
+        oDigit = sum[o];
+        odd_sum += oDigit;
+        o += 2;
+        printf("%i\n", oDigit);
+    }
+    printf("%i\n", odd_sum);
+    return (even_sum + odd_sum);
+}
+
+int get_length(long long cc_in)
 {
     int cc_length;
+    long long base_ten = 1;
     long long n;
-    if (cin < base_ten)
+    if (cc_in < base_ten)
     {
         return 1;
     }
-    while (base_ten < cin)                                //loop until modulo > cin
+    while (base_ten < cc_in)
     {
         base_ten *= 10;
         n = base_ten;
     }
     cc_length = log10(n);
     return cc_length;
-}//end get_length
+}
