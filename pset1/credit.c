@@ -13,6 +13,7 @@ int main()
     {
         printf("INVALID\n");
     }
+
     int digit[length];
     unsigned long long nextPos = 1;
 
@@ -40,7 +41,7 @@ int main()
         {
             printf("MASTERCARD\n");
         }
-        else if (sec_digit >= 34 && sec_digit <= 37)
+        else if (sec_digit == 34 || sec_digit == 37)
         {
             printf("AMEX\n");
         }
