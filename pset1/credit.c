@@ -2,28 +2,30 @@
 #include<stdio.h>
 #include<math.h>
 
+#define MIN_CC_LENGTH 13
+
 int check_Luhn(int sum[], int);
 int get_length(long long);
 
 int main()
 {
     long long cc_number = get_long_long("Number: ");
-    int length = get_length(cc_number);
-    if (length < 13)
+    int length = get_length(cc_number);                                 //store the length of the number in length
+    if (length < MIN_CC_LENGTH)
     {
-        printf("INVALID\n");
+        printf("INVALID\n");                                            //if the length is less than the minimum cc length, print INVALID
     }
 
-    int digit[length];
+    int digit[length];                                                  //initialize digit[]
     unsigned long long nextPos = 1;
 
     for (int i = 0; i < length; i++)
     {
-        digit[i] = (cc_number % (10 * nextPos))/(1 * nextPos);
+        digit[i] = (cc_number % (10 * nextPos))/(1 * nextPos);          //iterate through each digit and store in digit[length]
         nextPos *= 10;
     }
 
-    int valid = (check_Luhn(digit, length)) % 10;
+    int valid = check_Luhn(digit, length);
 
     if (valid != 0)
     {
