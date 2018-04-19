@@ -56,10 +56,7 @@ int check_Luhn(int sum[], int cc_length)
     int odd_sum = 0;
     int n = 0;
     int o = 0;
-
-    printf("even digits \n");
-
-    for (int i = 0; i < ((cc_length/2)+1); i++)
+    for (int i = 0; i < (cc_length/2); i++)
     {
         nDigit = (sum[n + 1])*2;
         if (nDigit > 9)
@@ -67,18 +64,14 @@ int check_Luhn(int sum[], int cc_length)
             nDigit = 1 + (nDigit % 10);
         }
         even_sum += nDigit;
-        printf("%i\n", nDigit);
         n += 2;
     }
     printf("%i\n", even_sum);
-    printf("odd digits\n");
-
-    for (int i = 0; i < ((cc_length/2)+1); i++)
+    for (int i = 0; i < (cc_length/2)+1; i++)
     {
         oDigit = sum[o];
         odd_sum += oDigit;
         o += 2;
-        printf("%i\n", oDigit);
     }
     printf("%i\n", odd_sum);
     return (even_sum + odd_sum);
