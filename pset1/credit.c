@@ -61,6 +61,7 @@ int check_Luhn(int sum[], int cc_length)
     int odd_sum = 0;
     int n = 0;
     int o = 0;
+
     for (int i = 0; i < (cc_length/2); i++)
     {
         nDigit = (sum[n + 1])*2;
