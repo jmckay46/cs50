@@ -9,6 +9,10 @@ int main()
 {
     long long cc_number = get_long_long("Number: ");
     int length = get_length(cc_number);
+    if (length < 13)
+    {
+        printf("INVALID\n");
+    }
     int digit[length];
     unsigned long long nextPos = 1;
 
@@ -66,14 +70,12 @@ int check_Luhn(int sum[], int cc_length)
         even_sum += nDigit;
         n += 2;
     }
-    printf("%i\n", even_sum);
     for (int i = 0; i < (cc_length/2)+1; i++)
     {
         oDigit = sum[o];
         odd_sum += oDigit;
         o += 2;
     }
-    printf("%i\n", odd_sum);
     return (even_sum + odd_sum);
 }
 
