@@ -33,7 +33,7 @@ int main()
     }
     else
     {
-        long long sec_digit = (cc_number - (cc_number % (nextPos/100)))/(nextPos/100);
+        long long sec_digit = (cc_number - (cc_number % (nextPos/100)))/(nextPos/100);              //access the first two digits, store it in sec_digit
 
         if (sec_digit >= 40 && sec_digit <= 49)
         {
@@ -80,8 +80,8 @@ int check_Luhn(int sum[], int cc_length)
         odd_sum += oDigit;
         o += 2;
     }
-    return (even_sum + odd_sum);
-}
+    return (even_sum + odd_sum) % 10;
+}//end check_luhn
 
 int get_length(long long cc_in)
 {
@@ -99,4 +99,4 @@ int get_length(long long cc_in)
     }
     cc_length = log10(n);
     return cc_length;
-}
+}//end get_length
