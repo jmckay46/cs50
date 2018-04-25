@@ -80,6 +80,7 @@ int check_Luhn(int sum[], int cc_length)
         odd_sum += oDigit;
         o += 2;
     }
+
     return (even_sum + odd_sum) % 10;
 }//end check_luhn
 
