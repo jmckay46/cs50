@@ -74,13 +74,12 @@ int check_Luhn(int sum[], int cc_length)
         even_sum += nDigit;
         n += 2;
     }
-    for (int i = 0; i < (cc_length/2)+1; i++)
+    for (int i = 0; i < (cc_length/2); i++)
     {
         oDigit = sum[o];
         odd_sum += oDigit;
         o += 2;
     }
-
     return (even_sum + odd_sum) % 10;
 }//end check_luhn
 

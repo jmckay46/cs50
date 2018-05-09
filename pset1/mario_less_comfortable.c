@@ -20,15 +20,15 @@ int main(void)
 
 }//end main
 
-void mario(int h)
+void mario(int m)
 {
-    for(int n = 1; n < h+1; n++)                      //print this many columns, changed i to 1 since it's not a full pyramid
+    for(int n = 1; i < n+1; n++)                      //print this many columns, changed i to 1 since it's not a full pyramid
     {
-        for(int i = h; l >i+1; i--)
+        for(int i = m; i >n+1; i--)
         {                                             //print this many spaces, decrement the amount of printed spaces
             printf("%c", SPACE);
         }
-        for(int j =0; j <=i; j++)                   //print this many blocks, increment the amount of printed blocks
+        for(int j =0; j <=n; j++)                   //print this many blocks, increment the amount of printed blocks
         {
             printf("%c", HASH);
         }
