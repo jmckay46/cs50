@@ -44,6 +44,8 @@ int main(int argc, string argv[])
 
 }//end main
 
+/* This function takes each character and adds the key value */
+
 char cipher_text(char cin, string key)
 {
         int keyIndex;
