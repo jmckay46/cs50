@@ -25,7 +25,7 @@ int main()
         nextPos *= 10;
     }
 
-    int valid = check_Luhn(digit, cc_length);                           //
+    int valid = check_Luhn(digit, cc_length);
 
     if (valid != 0)
     {
