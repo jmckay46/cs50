@@ -55,6 +55,10 @@ int main()
     return 0;
 }//end main
 
+/*      check_Luhn is an algorithm that returns either true or false.
+        It uses Luhns' algorithm to validate credit card numbers
+*/
+
 int check_Luhn(int sum[], int cc_length)
 {
     int nDigit;
