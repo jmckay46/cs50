@@ -87,6 +87,9 @@ int check_Luhn(int sum[], int cc_length)
     return (even_sum + odd_sum) % 10;
 }//end check_luhn
 
+/*          This function returns an integer; any given integer
+            from 0 to the maximum credit card number length -> 18
+*/
 int get_length(long long cc_in)
 {
     int cc_length;
