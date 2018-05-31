@@ -9,23 +9,23 @@ int get_length(long long);
 
 int main()
 {
-    long long cc_number = get_long_long("Number: ");
-    int length = get_length(cc_number);                                 //store the length of the number in length
-    if (length < MIN_CC_LENGTH)
+    unsigned int long long nextPos = 1;
+    unsigned int long long cc_number = get_long_long("Number: ");
+    int cc_length = get_length(cc_number);                                 //store the length of the number in length
+    int digit[cc_length];
+
+    if (cc_length < MIN_CC_LENGTH)                                         //the length
     {
         printf("INVALID\n");                                            //if the length is less than the minimum cc length, print INVALID
     }
 
-    int digit[length];                                                  //initialize digit[]
-    unsigned long long nextPos = 1;
-
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < cc_length; i++)                                 //iterate through each credit card number from an integer; 0 to cc_length
     {
-        digit[i] = (cc_number % (10 * nextPos))/(1 * nextPos);          //iterate through each digit and store in digit[length]
+        digit[i] = (cc_number % (10 * nextPos))/(1 * nextPos);          //iterate through each digit and store in digit[cc_length]
         nextPos *= 10;
     }
 
-    int valid = check_Luhn(digit, length);
+    int valid = check_Luhn(digit, cc_length);                           //
 
     if (valid != 0)
     {

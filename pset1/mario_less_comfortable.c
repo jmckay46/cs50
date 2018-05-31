@@ -22,13 +22,13 @@ int main(void)
 
 void mario(int m)
 {
-    for(int n = 1; i < n+1; n++)                      //print this many columns, changed i to 1 since it's not a full pyramid
+    for(int n = m; m < n+1; n++)                      //print this many columns, changed i to 1 since it's not a full pyramid
     {
         for(int i = m; i >n+1; i--)
         {                                             //print this many spaces, decrement the amount of printed spaces
             printf("%c", SPACE);
         }
-        for(int j =0; j <=n; j++)                   //print this many blocks, increment the amount of printed blocks
+        for(int j =0; j <=n; j++)                    //print this many blocks, increment the amount of printed blocks
         {
             printf("%c", HASH);
         }

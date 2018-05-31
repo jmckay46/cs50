@@ -52,7 +52,7 @@ char cipher_text(char cin, string key)
 
         if(isupper(key[charIndex % KEY_SIZE]))
         {
-            keyIndex = key[charIndex % KEY_SIZE] - ASCII_UPRCASE_INDEX;
+            keyIndex = key[charIndex % KEY_SIZE] - ASCII_UPRCASE_INDEX;             //set the keyIndex to each individual argc passed to the function
         }
         else
         {
