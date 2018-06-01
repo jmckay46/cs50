@@ -8,7 +8,7 @@
  * where n is number of pseudorandom numbers to print
  * and s is an optional seed
  */
- 
+
 #define _XOPEN_SOURCE
 
 #include <cs50.h>
@@ -21,14 +21,14 @@
 
 int main(int argc, string argv[])
 {
-    // TODO: comment me
+    // if we we don't have 2 and 3 command line arguments, then print the error message.
     if (argc != 2 && argc != 3)
     {
         printf("Usage: ./generate n [s]\n");
         return 1;
     }
 
-    // TODO: comment me
+    // store the second command line argument as an integer; n.
     int n = atoi(argv[1]);
 
     // TODO: comment me
