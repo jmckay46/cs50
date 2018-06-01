@@ -89,6 +89,7 @@ int check_Luhn(int sum[], int cc_length)
 
 /*          This function returns an integer; any given integer
             from 0 to the maximum credit card number length -> 18
+            by taking the logarithm of the inputs' decimal place.
 */
 int get_length(long long cc_in)
 {
