@@ -31,7 +31,7 @@ int main(int argc, string argv[])
     // store the second command line argument as an integer; n.
     int n = atoi(argv[1]);
 
-    // TODO: comment me
+    //if we have 3 command line arguments, then initialize the rand function with the 3rd CLA
     if (argc == 3)
     {
         srand48((long) atoi(argv[2]));
@@ -41,7 +41,7 @@ int main(int argc, string argv[])
         srand48((long) time(NULL));
     }
 
-    // TODO: comment me
+    //print out n amount of integers
     for (int i = 0; i < n; i++)
     {
         printf("%i\n", (int) (drand48() * LIMIT));
