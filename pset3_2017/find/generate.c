@@ -36,6 +36,7 @@ int main(int argc, string argv[])
     {
         srand48((long) atoi(argv[2]));
     }
+    //else then generate a random long integer based on the current time(in seconds) since January 1st, 1970.
     else
     {
         srand48((long) time(NULL));
