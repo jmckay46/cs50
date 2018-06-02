@@ -19,10 +19,15 @@
     The running time of your implementation must be in O(log n).
 */
 
+//this function returns true when you find the 'needle' in the 'haystack'
 bool search(int value, int values[], int n)
 {
     // TODO: implement a searching algorithm
-    //if values is in values[] then return true, othwrwise fuck off.
+    if (value == values[n])
+    {
+        return true;
+    }
+    //if value is in values[] then return true, othwrwise fuck off.
 
     return false;
 }
