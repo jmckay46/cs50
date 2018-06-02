@@ -28,10 +28,10 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    // store the second command line argument as an integer; n.
+    // store the second command line argument as an array, n.
     int n = atoi(argv[1]);
 
-    //if we have 3 command line arguments, then initialize the rand function with the 3rd CLA
+    //if we have 3 command line arguments, then initialize the third command line argument as a long int
     if (argc == 3)
     {
         srand48((long) atoi(argv[2]));
