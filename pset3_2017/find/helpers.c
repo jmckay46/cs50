@@ -3,7 +3,7 @@
  *
  * Helper functions for Problem Set 3.
  */
- 
+
 #include <cs50.h>
 
 #include "helpers.h"
@@ -11,9 +11,19 @@
 /**
  * Returns true if value is in array of n values, else false.
  */
+
+
+
+ /* Your implementation must return false immediately if n is non-positive.
+    Your implementation must return true if value is in values and false if value is not in values.
+    The running time of your implementation must be in O(log n).
+*/
+
 bool search(int value, int values[], int n)
 {
     // TODO: implement a searching algorithm
+    //if values is in values[] then return true, othwrwise fuck off.
+
     return false;
 }
 
