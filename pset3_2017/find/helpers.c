@@ -30,9 +30,10 @@ bool search(int value, int values[], int n)
     {
         return true;
     }
-    //if value is in values[] then return true, otherwise fuck off.
-
-    return false;
+    else if (values != values[n] && n < 0)
+    {
+        return false;
+    }
 }
 
 /**
