@@ -20,6 +20,9 @@
 */
 
 //this function returns true when you find the 'needle' in the 'haystack'
+//the needle in find.c is the value we are looking for.
+//values[n] is the number of values in the haystack.
+
 bool search(int value, int values[], int n)
 {
     // TODO: implement a searching algorithm
@@ -27,7 +30,7 @@ bool search(int value, int values[], int n)
     {
         return true;
     }
-    //if value is in values[] then return true, othwrwise fuck off.
+    //if value is in values[] then return true, otherwise fuck off.
 
     return false;
 }
