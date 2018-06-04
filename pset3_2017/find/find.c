@@ -31,7 +31,7 @@ int main(int argc, string argv[])
     // fill haystack
     int size;
     int haystack[MAX];
-    for (size = 0; size < MAX; size++)          //and loop till sizeof int
+    for (size = 0; size < MAX; size++)          //and loop till size of int
     {
         // wait for hay until EOF
         printf("\nhaystack[%i] = ", size);
