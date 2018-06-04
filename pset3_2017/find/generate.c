@@ -31,13 +31,12 @@ int main(int argc, string argv[])
     // store the second command line argument as an array, n.
     int n = atoi(argv[1]);
 
-    //if we have 3 command line arguments, then initialize the third command line argument as a long int
+    //initialize the seed as the third command line argument as a long integer.
     if (argc == 3)
     {
         srand48((long) atoi(argv[2]));
     }
-    //else then generate a random long integer based on the current time (in seconds) since January 1st, 1970.
-    else
+    else                                    //else, then set the seed as a long integer based on the time in seconds from Jan. 1st, 1970.
     {
         srand48((long) time(NULL));
     }
