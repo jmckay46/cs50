@@ -1,37 +1,43 @@
 #include<stdio.h>
 #include<cs50.h>
 
-#define SPACE ' '
-#define HASH '#'
-#define NEWLINE '\n'
-
-void mario(int h);
+void mario(int);
 
 int main(void)
 {
+
     int height;
+
     do
     {
-        height = get_int("Height: ");
+        height = get_int("Height: ");                          //repeatedly prompt the user for a positive integer
     }
+
     while(height < 0 || height > 23);
 
     mario(height);
 
 }//end main
 
-void mario(int m)
+
+void mario(int h_in)
 {
-    for(int n = m; m < n+1; n++)                      //print this many columns, changed i to 1 since it's not a full pyramid
-    {
-        for(int i = m; i >n+1; i--)
-        {                                             //print this many spaces, decrement the amount of printed spaces
-            printf("%c", SPACE);
-        }
-        for(int j =0; j <=n; j++)                    //print this many blocks, increment the amount of printed blocks
+    //num_lines is the total # of spaces and hashes
+    for(int num_lines = 0; num_lines < h_in; num_lines++ )
         {
-            printf("%c", HASH);
-        }
-        printf("%c", NEWLINE);                       //print a new line per loop
-    } //end for loop
+            //print the number of spaces
+            for (int num_spaces = h_in; num_spaces > num_lines+1; num_spaces--)
+                {
+                    printf(" ");
+                }
+            //print the number of hashes
+            for (int hashes = 0; hashes <= num_lines; hashes++)
+                {
+                    printf("#");
+                }
+            //print a new line per loop
+            printf("\n");
+
+        } //end of main for loop
+
 }//end mario
