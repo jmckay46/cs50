@@ -5,7 +5,7 @@
 #define HASH '#'
 #define NEWLINE '\n'
 
-void mario(int yNum);
+void mario(int);
 
 int main(void)
 {
@@ -20,24 +20,24 @@ int main(void)
 
 }//end main
 
-void mario(int yNum)
+void mario(int h_in)
 {
-    for(int i = 0; i < yNum; i++)                          //this loop prints one row and loops again until i is less than the users input
+    for(int i = 0; i < h_in; i++)
         {
-            for (int n = yNum; n > i+1; n--)                //this loop prints the number of spaces per row
+            for (int n = h_in; n > i+1; n--)
             {
                 printf("%c", SPACE);
             }
-            for (int m = 0; m <= i; m++)                    //this loop prints the number of hashes per row
+            for (int m = 0; m <= i; m++)
             {
                 printf("%c", HASH);
             }
-            printf("  ");                                   //print 2 spaces after the printed hashes
+            printf("  ");
 
-            for (int k = 0; k <= i; k++)                    //print the same number of hashes again for the full double pyramid
+            for (int k = 0; k <= i; k++)
                 {
                     printf("%c", HASH);
                 }
-            printf("%c", NEWLINE);                          //print a new line for each loop
-        } //end of main for loop
+            printf("%c", NEWLINE);
+        } //end of one line - on to the next.
 }//end mario
