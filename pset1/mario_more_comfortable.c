@@ -5,7 +5,7 @@
 #define HASH '#'
 #define NEWLINE '\n'
 
-void mario(int);
+void double_pyramid(int);                                       //prints mario's double pyramid based on the height variablle
 
 int main(void)
 {
@@ -16,25 +16,29 @@ int main(void)
     }
     while(height < 0 || height > 23);                           //input constraints must be greater than zero and less than 23
 
-    mario(height);
+    double_pyramid(height);
 
 }//end main
 
-void mario(int h_in)
+void double_pyramid(int h_in)
 {
-    for(int i = 0; i < h_in; i++)
+    //start at line one, column one
+    //h_in is the input variable
+    for(int num_lines = 0; num_lines < h_in; num_lines++)
         {
-            for (int n = h_in; n > i+1; n--)
+            //num_spaces is the number of spaces printed
+            for (int num_spaces = h_in; num_spaces > num_lines+1; num_spaces--)
             {
                 printf("%c", SPACE);
             }
-            for (int m = 0; m <= i; m++)
+            //print these many hashes after every space is printed in each line
+            for (int num_hashes = 0; num_hashes <= num_lines; num_hashes++)
             {
                 printf("%c", HASH);
             }
             printf("  ");
 
-            for (int k = 0; k <= i; k++)
+            for (int num_hashes = 0; num_hashes <= num_spaces; k++)
                 {
                     printf("%c", HASH);
                 }
