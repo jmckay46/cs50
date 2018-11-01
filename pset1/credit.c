@@ -6,58 +6,20 @@
 
 int check_Luhn(int sum[], int);
 int get_length(long long);
+void cc_valid(long long, long long, int);
+
 
 int main()
 {
     unsigned int long long nextPos = 1;
     unsigned int long long cc_number = get_long_long("Number: ");
+
     int cc_length = get_length(cc_number);                                 //store the length of the number in length
-    int digit[cc_length];
 
-    if (cc_length < MIN_CC_LENGTH)                                         //the length
-    {
-        printf("INVALID\n");                                            //if the length is less than the minimum cc length, print INVALID
-    }
-
-    for (int i = 0; i < cc_length; i++)                                 //iterate through each credit card number from an integer; 0 to cc_length
-    {
-        digit[i] = (cc_number % (10 * nextPos))/(1 * nextPos);          //iterate through each digit and store in digit[cc_length]
-        nextPos *= 10;
-    }
-
-    int valid = check_Luhn(digit, cc_length);
-
-    if (valid != 0)
-    {
-        printf("INVALID\n");
-    }
-    else
-    {
-        long long sec_digit = (cc_number - (cc_number % (nextPos/100)))/(nextPos/100);              //access the first two digits, store it in sec_digit
-
-        if (sec_digit >= 40 && sec_digit <= 49)
-        {
-            printf("VISA\n");
-        }
-        else if (sec_digit >= 51 && sec_digit <= 55)
-        {
-            printf("MASTERCARD\n");
-        }
-        else if (sec_digit == 34 || sec_digit == 37)
-        {
-            printf("AMEX\n");
-        }
-        else
-        {
-            printf("INVALID\n");
-        }
-    }
+    cc_valid(cc_length, nextPos, valid);
     return 0;
 }//end main
 
-/*      check_Luhn is an algorithm that returns either true or false.
-        It uses Luhns' algorithm to validate credit card numbers
-*/
 
 int check_Luhn(int sum[], int cc_length)
 {
@@ -108,3 +70,50 @@ int get_length(long long cc_in)
     cc_length = log10(n);
     return cc_length;
 }//end get_length
+
+void cc_valid(long long cc_in)
+{
+    long long nextPos = 1;
+    int digit[cc_length];
+
+    for (int i = 0; i < cc_length; i++)                                 //iterate through each credit card number from an integer; 0 to cc_length
+    {
+        digit[i] = (cc_number % (10 * nextPos))/(1 * nextPos);          //iterate through each digit and store in digit[cc_length]
+        nextPos *= 10;
+    }
+
+    int valid = check_Luhn(digit, cc_length);
+
+    long long sec_digit = (cc_in - (cc_in % (nextPos/100)))/(nextPos/100);              //access the first two digits, store it in sec_digit
+
+     if (cc_in < MIN_CC_LENGTH)                                         //the length
+    {
+        printf("INVALID\n");                                            //if the length is less than the minimum cc length, print INVALID
+    }
+
+    if (valid != 0)
+    {
+        printf("INVALID\n");
+    }
+    else
+    {
+
+        if (sec_digit >= 40 && sec_digit <= 49)
+        {
+            printf("VISA\n");
+        }
+        else if (sec_digit >= 51 && sec_digit <= 55)
+        {
+            printf("MASTERCARD\n");
+        }
+        else if (sec_digit == 34 || sec_digit == 37)
+        {
+            printf("AMEX\n");
+        }
+        else
+        {
+            printf("INVALID\n");
+        }
+    }
+
+}
