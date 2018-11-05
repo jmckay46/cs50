@@ -35,7 +35,7 @@ void string_hex(char cin0)
         hex_val[i] = hex_list[index];
         int_val0 = int_val0/HEX_BASE;
     }
-    printf("Hex value of '%c' is '0x%s'\n", cin0, hex_val);
+    printf("'%c' = '0x%s' = ", cin0, hex_val);
 }
 
 void str_binary(char cin1)
@@ -56,5 +56,5 @@ void str_binary(char cin1)
         }
         int_val1 = int_val1/2;
     }
-    printf("Binary value:'%s'\n", bit_val);
+    printf("'%s'\n", bit_val);
 }
