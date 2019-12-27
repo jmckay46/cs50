@@ -8,12 +8,14 @@
 
 int main(int argc, string argv[])
 {
-    int n = atoi(argv[1]);                  //n is the random integer variable being stored into our unsorted array
-    int list[MAX];
+    int i = 1;
+    int n = atoi(argv[i]);                  //n is the random integer variable being stored into our unsorted array
+    int list[argc-1];
 
-    for(int i =0; i <= MAX; i++)            //store each element in array
+    for(int s =0; s <= MAX; s++)            //store each element in array
     {
-        list[i] = n;
+        list[s] = atoi(argv[i]);
+        i++;
     }
 
     int cnt = 0;
