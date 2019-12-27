@@ -1,16 +1,32 @@
 #include<cs50.h>
 #include<stdio.h>
+#include<stdlib.h>
 
-void swap(int *, int *);
+//void swap(int *, int *);
 
-int main()
+int main(int argc, string argv[])
 {
-    int list[8] = { 1, 9, 6, 3, 8, 7, 2, 5 };
-    int n = 8;
-
-    for(int i = 1; i <= n; i++)
+    if(argc <= 0)
     {
-        for(int j = n; j >= i; j--)
+        printf("Usage: ./bubble_sort\n");
+        return 1;
+    }
+
+    //store second line CLA into variable n
+    int n = atoi(argv[1]);
+    int index = atoi(argv[2]);
+    //declare array
+    int i = 0;
+    int list[i];
+
+    for(; i <= index; i--)
+    {
+        list[i] = n;
+    }
+
+   /* for(int i = n; i <= n; i--)
+    {
+        for(int j = n; j <= i; j--)
         {
             if(list[j] > list[j+1])
             {
@@ -18,17 +34,13 @@ int main()
             }
         }
     }
-
-    for(int i =0; i < 8; i ++)
-    {
-        printf("%d\n", list[i]);
-    }
-
+    */
 }
 
-void swap(int *a, int *b)
+/*void swap(int *a, int *b)
 {
     int tmp = *a;
     *a = *b;
     *b = tmp;
 }
+*/
