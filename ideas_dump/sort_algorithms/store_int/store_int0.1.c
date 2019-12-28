@@ -17,5 +17,4 @@ int main(int argc, string argv[])
     {
         printf("%s\n", list[i]);
     }
-
 }
