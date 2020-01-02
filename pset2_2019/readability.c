@@ -7,20 +7,43 @@
         Meri Coleman and T. L. Liau to gauge the understandability
                             of a text.                                */
 
+int num_char(string);                                  //returns # of alphabets and punctuations in a string
+int num_space(string);                                 //returns # of spaces in a string
+
 int main(void)
 {
     string text = get_string("Text: ");
-    int str_len = strlen(text);
-    int char_cnt = 0;
+    int letters = num_char(text) - num_space(text);
+    printf("%i\n", letters);
+    //how many letters are in a sentence
+}
 
-    for(int i =0; i < str_len; i++)            //iterate through each character, omitt if space
+int num_char(string s)
+{
+       int char_cnt = 0;
+
+       for(int i =0; i < strlen(s); i++)
+       {
+           if(isalpha(s[i]) || ispunct(s[i]))
+           {
+               char_cnt++;
+           }
+       }
+    return char_cnt;
+}
+
+int num_space(string s)
+{
+    int space_cnt = 0;
+
+    for(int i =0; i < strlen(s); i++)
     {
-        if(isalpha(text[i]) || ispunct(text[i]))
+        if(isspace(s[i]))
         {
-            char_cnt++;
+            space_cnt++;
         }
     }
-
-    printf("character count is: %i\n", char_cnt);
+    return space_cnt;
 }
+
 
