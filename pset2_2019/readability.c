@@ -14,16 +14,17 @@ int main(void)
     string text = get_string("Text: ");
     int letters = count_letters(text);
     int words = 0;
+    printf("letters: %i\n", letters);
 
-    for(int i = 0; i <strlen(text); i++)
+    for(int index = 0; index <strlen(text); index++)
     {
-        if(isspace(text[i]))
+        if(isspace(text[index]))
         {
-            words++;
+            words = index - letters;
         }
     }
 
-    printf("%i\n", words);
+    printf("words: %i\n", words);
 }
 
 int count_letters(string s)
@@ -39,4 +40,3 @@ int count_letters(string s)
        }
     return alpha;
 }
-
