@@ -8,22 +8,14 @@
                             of a text.                                */
 
 int count_letters(string);                                    //gets the number of letters in a string
+int count_words(string, int);
 
 int main(void)
 {
     string text = get_string("Text: ");
     int letters = count_letters(text);
-    int words = 0;
+    int words = count_words(text, letters);
     printf("letters: %i\n", letters);
-
-    for(int index = 0; index <strlen(text); index++)
-    {
-        if(isspace(text[index]))
-        {
-            words = index - letters;
-        }
-    }
-
     printf("words: %i\n", words);
 }
 
@@ -31,7 +23,7 @@ int count_letters(string s)
 {
      int alpha = 0;
 
-       for(int i =0; i <strlen(s); i++)
+       for(int i = 0; i <strlen(s); i++)
        {
            if(isalpha(s[i]))
            {
@@ -39,4 +31,18 @@ int count_letters(string s)
            }
        }
     return alpha;
+}
+
+int count_words(string s, int l_in)
+{
+    int words;
+
+    for(int i = 0; i <strlen(s); i++)
+    {
+        if(isspace(s[i]))
+        {
+            words = i - l_in;
+        }
+    }
+    return words;
 }
