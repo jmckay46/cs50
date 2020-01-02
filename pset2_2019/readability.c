@@ -7,20 +7,21 @@
         Meri Coleman and T. L. Liau to gauge the understandability
                             of a text.                                */
 
-int num_char(string);                                  //returns # of alphabets and punctuations in a string
-int num_space(string);                                 //returns # of spaces in a string
+int num_letters(string);
 
 int main(void)
 {
     string text = get_string("Text: ");
-    int letters = num_char(text) - num_space(text);
-    printf("%i\n", letters);
+    int n = num_letters(text);
+    printf("%i\n", n);
     //how many letters are in a sentence
 }
 
-int num_char(string s)
+int num_letters(string s)
 {
-       int char_cnt = 0;
+     int char_cnt = 0;
+     int space_cnt = 0;
+     int letters;
 
        for(int i =0; i < strlen(s); i++)
        {
@@ -28,22 +29,15 @@ int num_char(string s)
            {
                char_cnt++;
            }
+           else if(isspace(s[i]))
+           {
+               space_cnt++;
+           }
        }
-    return char_cnt;
-}
 
-int num_space(string s)
-{
-    int space_cnt = 0;
+    letters = char_cnt - space_cnt;
 
-    for(int i =0; i < strlen(s); i++)
-    {
-        if(isspace(s[i]))
-        {
-            space_cnt++;
-        }
-    }
-    return space_cnt;
+    return letters;
 }
 
 
