@@ -7,14 +7,14 @@
 int main()
 {
     //Open file
-    FILE *file = fopen("phonebook.csv", "a");
+    char size[1000];
 
-    //Get strings from user
-    char *name = get_string("Name: ");
-    char *number = get_string("Number: ");
+    FILE *file = fopen("bmp.txt", "r");
 
-    //Print(write) strings to a file
-    fprintf(file, "%s, %s\n", name, number);
+    fread(size, 1000, 1, file);
+
+    printf("%s\n", size);
+
 
     //Close file
     fclose(file);
