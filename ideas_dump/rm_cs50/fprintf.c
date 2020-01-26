@@ -2,18 +2,16 @@
 #include <stdio.h>
 #include <string.h>
 
-//.csv -> comma separated values/variables
 
 int main()
 {
-    //Open file
-    char size[1000];
+    char buffer[1000];
 
     FILE *file = fopen("bmp.txt", "r");
 
-    fread(size, 1000, 1, file);
+    fread(buffer, 1, 1, file);              //read 1 byte, 1 byte per time
 
-    printf("%s\n", size);
+    printf("%s\n", buffer);
 
 
     //Close file
