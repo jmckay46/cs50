@@ -11,7 +11,7 @@ int main(void)
     for(int i = 0; i < 5; i++)
     {
         sequence[i] = sequence [i-1];
-        printf("%i\n", sequence[])
+        printf("%i\n", sequence[gi])
     }
 }
 
