@@ -9,20 +9,21 @@ int main(int argc, string argv[])
 {
     string plaintext = get_string("plaintext: ");
     string key = argv[1];
-    printf("key: %s\n", argv[1]);
-    int int_values[5];
+
+    int key_len = strlen(argv[1]);
+    int key_values[key_len];
 
     for(int i = 0, len = strlen(key); i < len; i++)
     {
         if(isupper(key[i]))
         {
-            int_values[i] = (int) key[i] - 65;
+            key_values[i] = (int) key[i] - 65;
         }
         else if(islower(key[i]))
         {
-            int_values[i] = (int) key[i] - 97;
+            key_values[i] = (int) key[i] - 97;
         }
 
-        printf("%i\n", int_values[i]);
+        printf("%i\n", key_values[i]);
     }
 }
