@@ -8,13 +8,13 @@
 int main(int argc, string argv[])
 {
     string plaintext = get_string("plaintext: ");
-    int key = atoi(argv[1]);
-    printf("%i\n", key);
+    string key = argv[1];
+    printf("key: %s\n", argv[1]);
+    int int_values[5];
 
-    for(int i = 0, len = strlen(plaintext); i < len; i++)
+    for(int i = 0, len = strlen(key); i < len; i++)
     {
-        plaintext[i] = plaintext[i] + key;
-        printf("%s\n", plaintext);
+        int_values[i] = (int) key[i];
+        printf("%i\n", int_values[i]);
     }
-
 }
