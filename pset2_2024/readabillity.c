@@ -28,3 +28,16 @@ int count_letters(string text)
     }
     return letters;
 }
+
+int count_words(string text)
+{
+    int words = 0;
+    for(int i = 0, len = strlen(text); i < len; i++)
+    {
+        if(isspace(text[i]))
+        {
+            words = words+1;
+        }
+    }
+    return words;
+}
