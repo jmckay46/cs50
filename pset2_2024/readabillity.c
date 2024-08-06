@@ -13,16 +13,18 @@ int main(void)
   string text = get_string("Text: ");
 
   int letters = count_letters(text);
+  printf("%i\n", letters);
 }
 
 int count_letters(string text)
 {
    int letters = 0;
    for(int i = 0, len = strlen(text); i < len; i++)
-{
-    if(isalpha(text))
-   {
-    letters = letters+1;
-   }
- }
+    {
+        if(isalpha(text[i]))
+        {
+            letters = letters+1;
+        }
+    }
+    return letters;
 }
