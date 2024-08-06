@@ -14,7 +14,15 @@ int main(int argc, string argv[])
 
     for(int i = 0, len = strlen(key); i < len; i++)
     {
-        int_values[i] = (int) key[i];
+        if(isupper(key[i]))
+        {
+            int_values[i] = (int) key[i] - 65;
+        }
+        else if(islower(key[i]))
+        {
+            int_values[i] = (int) key[i] - 97;
+        }
+
         printf("%i\n", int_values[i]);
     }
 }
